@@ -40,6 +40,8 @@ In your view:
   end %>
 	
 This will generate a series of <fieldset> elements which are then automatically processed to create a neat tabbed navigation.
+The helper will generate tab identifiers, e.g. "Remote content" will become "remote_content".  This ID can be used as an URL 
+fragment to open the page and activate the tab, e.g. /path/to/page#remote_content.
 
 You can also set the default active tab in your controller using:
 
