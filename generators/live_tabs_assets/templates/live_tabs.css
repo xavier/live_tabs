@@ -1,0 +1,47 @@
+
+.tabs .tablist {
+	list-style-type: none;
+	margin: 0 !important;
+	overflow: hidden;
+}
+
+.tabs .tablist li {
+	float: left;
+	background: #ccc;
+	border: 1px outset #ccc;
+	border-bottom: 1px solid #bbb;
+	color: #333;
+	padding: 0.25em;
+	margin-right: 2px;
+	height: 22px;
+}
+
+.tabs .tablist li:hover {
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+.tabs .tablist li.active {
+	background-color: #ddd;
+	border-color: #ddd;
+}
+
+.tabs.enhanced .tab {
+	display: none;
+	background: #ddd;
+	border: 1px outset #ddd;
+	border-top: none;
+	padding: 1em;
+}
+
+.tabs.enhanced .title {
+	display: none;
+}
+
+.tabs.enhanced .tab.active {
+	display: block;
+}
+
+.tabs fieldset { margin-top :0;}
+
+.tablabel { padding-right: 20px;}
