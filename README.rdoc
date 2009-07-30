@@ -32,7 +32,6 @@ In your view:
   	
   	t.tab('HTML',  :html => "Some <b>inline</b> HTML content without an ERb block")
   	t.tab('Partial',  :partial => 'partial')
-  	t.tab('Template', :template => 'tabs/template', :locals => {:local_var => 'Local Var'})
   	t.tab('File',     :file => File.join(RAILS_ROOT, 'app/views/tabs/file.html.erb'))
   	  
   	t.tab('Remote content', :url => slow_tabs_path)

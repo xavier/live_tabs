@@ -22,7 +22,7 @@ module LiveTabsHelper
       
       tab_name = LiveTabs.string_to_tab_name(label)
       
-      if options[:partial] || options[:file] || options[:template]
+      if options[:partial] || options[:file]
         tab_html += render(options) || ''
       elsif options[:html]
         tab_html += options[:html]
