@@ -1,15 +1,20 @@
 
 module LiveTabsHelper
     
-  def tabset(tabset_id = :tabs, tabset_options = {}, &b)
+  def tabset(tabset_id = :tabs, tabset_options = {}, &tabs_definitions)
+
     tab_list = []
-    
+
+    # Mini DSL to define a tab
     def tab_list.tab(label, options = {}, html_options = {}, &block)
       self << [label, options, html_options, block]
     end
     
-    b.call(tab_list)
+    # Gather tabs definitions
+    tabs_definitions.call(tab_list)
     
+    # Build the HTML for the tab and collect the information required to create 
+    # the callbacks used fetch remote content
     tabset_html = []
     callbacks = []
   
@@ -17,11 +22,13 @@ module LiveTabsHelper
       
       label, options, html_options, block = tab_data
       
+      # Content of the fieldset
       tab_html = content_tag(:legend, label, :class => 'title')
       tab_classes = [html_options[:class], 'tab']
       
       tab_name = LiveTabs.string_to_tab_name(label)
       
+      # Inline content
       if options[:partial] || options[:file]
         tab_html += render(options) || ''
       elsif options[:html]
@@ -41,7 +48,7 @@ module LiveTabsHelper
       
     end
 
-    # Wrap contents
+    # Wrap all fieldsets
     html = content_tag(:div, tabset_html.join("\n"), 
                          :id => tabset_id, 
                          :class => tabset_options[:class] ? (tabset_options[:class] + ' tabs') : 'tabs',
@@ -49,9 +56,9 @@ module LiveTabsHelper
                              
     tab_focus = @tabs_focus && @tabs_focus[tabset_id]
     
-    # Add local Javascript when required
+    # Add local Javascript if required
     if callbacks.any? || tab_focus
-        # Open tab with focus
+        # Open tab with focus unless an URL fragment has been given
         local_js = tab_focus ? "document.observe('dom:loaded',function(){if(window.location.hash!=''){Event.fire('tab_'+window.location.hash.substring(1, window.location.hash.length), 'tabs:tabfocus');}else{#{open_tab(tab_focus)};};});" : ''
         # Add callbacks for AJAX tabs
         local_js += callbacks.map do |tab_name, options|
@@ -64,7 +71,7 @@ module LiveTabsHelper
         end.join("\n")
         html += javascript_tag(local_js)
     end
-  
+
     concat(html)
   end
   

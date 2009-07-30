@@ -1,2 +1,3 @@
 - Test again in IE :(
 - Refactor and unobtrusify the JavaScript
+- Smarter AJAX tabpanes which do not reload content unless specified
