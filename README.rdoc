@@ -1,7 +1,7 @@
 = LiveTabs
 
 Dynamic in-page tabbed navigation for Rails, supporting both inline and remote content.
-LiveTabs also degrade gracefully and allow for bookmarking of in-page tabs.
+LiveTabs also degrade gracefully and allow for bookmarking of open tabs.
 
 == Example
 
