@@ -7,7 +7,7 @@ LiveTabs also degrade gracefully and allow for bookmarking of open tabs.
 
 In order to copy the required assets to your public folder, first run:
 
-  script/generator live_tabs_assets
+  script/generate live_tabs_assets
 
 In your application template, require them as follow:
 
@@ -16,7 +16,7 @@ In your application template, require them as follow:
 
 In your view:
 
-  <%= tabset(:tabs, :placeholder => "Loading...", :class => 'my-class') do |t|
+  <% tabset(:tabs, :placeholder => "Loading...", :class => 'my-class') do |t|
   
   	t.tab('Static HTML') do
   		%>
