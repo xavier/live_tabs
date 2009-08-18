@@ -69,7 +69,7 @@ Object.extend(Tabset, {
 
 		if (window.location.hash != '') {
 			tab_with_focus = 'tab_'+window.location.hash.substring(1, window.location.hash.length);
-			document.observe('dom:loaded', function(){ Event.fire(tab_with_focus, 'tabs:tabfocus'); });
+		  Event.fire(tab_with_focus, 'tabs:tabfocus'); 
 		}
 
 	}
